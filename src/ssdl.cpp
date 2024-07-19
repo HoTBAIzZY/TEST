@@ -1,10 +1,9 @@
 #include <SDL2/SDL.h>  
 #include <SDL_keycode.h>
+#include "snake.h"
+#include "defines.h"
 #include <iostream>  
-  
-const int SCREEN_WIDTH = 800;  
-const int SCREEN_HEIGHT = 600;  
-const int BLOCK_SIZE = 50;  
+
   
 int main(int argc, char* argv[]) {  
     SDL_Window* window = nullptr;  
@@ -37,10 +36,9 @@ int main(int argc, char* argv[]) {
         SDL_Quit();  
         return 1;  
     }  
-  
-    // 初始化方块位置  
-    int blockX = SCREEN_WIDTH / 2 - BLOCK_SIZE / 2;  
-    int blockY = SCREEN_HEIGHT / 2 - BLOCK_SIZE / 2;  
+    
+  //初始化蛇
+   Square s;
   
     // 游戏主循环  
     while (!quit) {  
@@ -62,19 +60,25 @@ int main(int argc, char* argv[]) {
                     case SDLK_RIGHT:  
                         blockX += 10;  
                         break;  
-                }  
+                }
+
+
+
+
+                
             }  
         }  
   
         // 清除屏幕  
         SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);  
         SDL_RenderClear(renderer);  
-  
+
+
+
         // 绘制方块  
-        SDL_Rect blockRect = {blockX, blockY, BLOCK_SIZE, BLOCK_SIZE};  
-        SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0xFF, 0xFF);  
-        SDL_RenderFillRect(renderer, &blockRect);  
-  
+        
+        s.Draw(renderer);
+
         // 更新屏幕  
         SDL_RenderPresent(renderer);  
   
