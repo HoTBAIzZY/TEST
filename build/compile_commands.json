@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/zzy/workspace/test/build",
+  "command": "/usr/bin/g++  -isystem /usr/include/SDL2 -g -o CMakeFiles/test.dir/src/ssdl.cpp.o -c /home/zzy/workspace/test/src/ssdl.cpp",
+  "file": "/home/zzy/workspace/test/src/ssdl.cpp"
+}
+]
