@@ -7,7 +7,7 @@ class Snake
 {
 public:
     Snake();
-	Snake(int x, int y, SDL_Texture* texture);
+	Snake(int x, int y);
 	~Snake(void);
 
 public:
@@ -17,8 +17,8 @@ public:
 	int getCenterY() const { return this->center_y; }
     
 	//控制蛇的位置改变量
-	int changeCenterX(bool add,int num);
-	int changeCenterY(bool add,int num);
+	void changeCenterX(bool add,int num);
+	void changeCenterY(bool add,int num);
 	void Draw(SDL_Renderer* renderer);
 
 

@@ -1,10 +1,25 @@
 #include <SDL2/SDL.h>  
 #include <SDL_keycode.h>
 #include "snake.h"
+#include "food.h"
 #include "defines.h"
+#include <SDL_render.h>
 #include <iostream>  
 
-  
+void snake_eat_food(Snake& s,Food& f,SDL_Renderer* renderer){
+    if((s.getCenterX()==f.getCenterX())
+    && (s.getCenterY()==f.getCenterY())){
+    /* 生成新食物 */
+        f.getnewfood();
+           
+ 
+        // 绘制方块         
+        s.Draw(renderer);
+        f.Draw(renderer);        
+        // 更新屏幕  
+        SDL_RenderPresent(renderer);        
+        }  
+}
 int main(int argc, char* argv[]) {  
     SDL_Window* window = nullptr;  
     SDL_Renderer* renderer = nullptr;  
@@ -37,9 +52,11 @@ int main(int argc, char* argv[]) {
         return 1;  
     }  
     
-  //初始化蛇
-   Square s;
-  
+  //初始化蛇、食物
+   Snake s;
+   Food f;
+
+
     // 游戏主循环  
     while (!quit) {  
         // 处理事件  
@@ -49,23 +66,19 @@ int main(int argc, char* argv[]) {
             } else if (e.type == SDL_KEYDOWN) {  
                 switch (e.key.keysym.sym) {  
                     case SDLK_UP:  
-                        blockY -= 10;  
+                        s.changeCenterY(false,1);                       
                         break;  
                     case SDLK_DOWN:  
-                        blockY += 10;  
+                        s.changeCenterY(true,1);                         
                         break;  
                     case SDLK_LEFT:  
-                        blockX -= 10;  
+                        s.changeCenterX(false,1);                      
                         break;  
                     case SDLK_RIGHT:  
-                        blockX += 10;  
+                        s.changeCenterX(true,1);                     
                         break;  
                 }
 
-
-
-
-                
             }  
         }  
   
@@ -73,19 +86,20 @@ int main(int argc, char* argv[]) {
         SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);  
         SDL_RenderClear(renderer);  
 
-
-
-        // 绘制方块  
-        
+ 
+        // 绘制方块         
         s.Draw(renderer);
+        f.Draw(renderer); 
 
         // 更新屏幕  
-        SDL_RenderPresent(renderer);  
-  
-        // 控制游戏速度  
+        SDL_RenderPresent(renderer); 
+        
+        snake_eat_food(s,f,renderer);
+       
+    }
+   // 控制游戏速度  
         SDL_Delay(10);  
-    }  
-  
+
     // 释放资源并退出  
     SDL_DestroyRenderer(renderer);  
     SDL_DestroyWindow(window);  

@@ -1,21 +1,32 @@
 #include "snake.h"  
 
-Square::Square()
-{
+Snake::Snake(){
 	center_x = SCREEN_WIDTH / 2 - BLOCK_SIZE / 2; ;
 	center_y = SCREEN_HEIGHT / 2 - BLOCK_SIZE / 2;
 }
 
-Square::Square(int x, int y, SDL_Texture* texture):
-	texture(texture)
-{
+Snake::Snake(int x, int y){
 	center_x = SCREEN_WIDTH / 2 - BLOCK_SIZE / 2; ;
 	center_y = SCREEN_HEIGHT / 2 - BLOCK_SIZE / 2;
 }
 
+void Snake::changeCenterX(bool add,int num){
+	if(add){
+		center_x +=num;
+	}else{
+		center_x -=num;
+	}
+}
+void Snake::changeCenterY(bool add,int num){
+	if(add){
+		center_y +=num;
+	}else{
+		center_y -=num;
+	}
+}
 
-void Square::Draw(SDL_Renderer* renderer)
-{
+
+void Snake::Draw(SDL_Renderer* renderer){
 	   
      //绘制方块
 	SDL_Rect blockRect = {center_x, center_y, BLOCK_SIZE, BLOCK_SIZE};  
@@ -24,7 +35,6 @@ void Square::Draw(SDL_Renderer* renderer)
 
 }
 
-Square::~Square(void)
-{
+Snake::~Snake(void){
 	// nothing to do
 }

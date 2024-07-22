@@ -8,7 +8,9 @@ project(test)
 find_package(SDL2 REQUIRED)
 
 add_executable(test
-    src/ssdl.cpp)
+    src/ssdl.cpp
+    src/snake.cpp
+    src/food.cpp)
 
 #target_link_libraries(test
 #    PRIVATE

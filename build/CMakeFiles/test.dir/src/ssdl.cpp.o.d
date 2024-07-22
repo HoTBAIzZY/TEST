@@ -212,9 +212,12 @@ CMakeFiles/test.dir/src/ssdl.cpp.o: /home/zzy/workspace/test/src/ssdl.cpp \
  /usr/include/SDL2/SDL_shape.h /usr/include/SDL2/SDL_system.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
- /usr/include/SDL2/SDL_keycode.h /usr/include/c++/11/iostream \
- /usr/include/c++/11/ostream /usr/include/c++/11/ios \
- /usr/include/c++/11/iosfwd /usr/include/c++/11/bits/stringfwd.h \
+ /usr/include/SDL2/SDL_keycode.h /home/zzy/workspace/test/src/snake.h \
+ /home/zzy/workspace/test/src/defines.h \
+ /home/zzy/workspace/test/src/food.h /usr/include/SDL2/SDL_render.h \
+ /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
+ /usr/include/c++/11/ios /usr/include/c++/11/iosfwd \
+ /usr/include/c++/11/bits/stringfwd.h \
  /usr/include/c++/11/bits/memoryfwd.h /usr/include/c++/11/bits/postypes.h \
  /usr/include/c++/11/cwchar /usr/include/c++/11/exception \
  /usr/include/c++/11/bits/exception.h \
