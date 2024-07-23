@@ -30,17 +30,3 @@ private:
 };
 
 
-/*
-void snake_eat_food(Snake s,Food f,SDL_Renderer* renderer){
-    if(s.getCenterX()==f.getCenterX()
-    && s.getCenterY()==f.getCenterY()){
- 
-        f.getnewfood();
-        f.Draw(renderer);
-            // 更新屏幕  
-        SDL_RenderPresent(renderer);  
-    }
-}
-
-
-*/

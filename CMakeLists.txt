@@ -4,13 +4,15 @@ set(CMAKE_TOOLCHAIN_FILE /home/zzy/workspace/vcpkg/scripts/buildsystems/vcpkg.cm
 
 project(test)
 
+add_compile_options(-fsanitize=address)
+add_link_options(-fsanitize=address)
+
 #find_package(SDL2 CONFIG REQUIRED)
 find_package(SDL2 REQUIRED)
 
 add_executable(test
-    src/ssdl.cpp
-    src/snake.cpp
-    src/food.cpp)
+    src/main.cpp
+    src/snake.cpp)
 
 #target_link_libraries(test
 #    PRIVATE

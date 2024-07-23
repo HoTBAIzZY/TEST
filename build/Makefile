@@ -129,29 +129,29 @@ test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
-src/food.o: src/food.cpp.o
-.PHONY : src/food.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-src/food.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/food.cpp.o
-.PHONY : src/food.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-src/food.i: src/food.cpp.i
-.PHONY : src/food.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-src/food.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/food.cpp.i
-.PHONY : src/food.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-src/food.s: src/food.cpp.s
-.PHONY : src/food.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-src/food.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/food.cpp.s
-.PHONY : src/food.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 src/snake.o: src/snake.cpp.o
 .PHONY : src/snake.o
@@ -177,30 +177,6 @@ src/snake.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/snake.cpp.s
 .PHONY : src/snake.cpp.s
 
-src/ssdl.o: src/ssdl.cpp.o
-.PHONY : src/ssdl.o
-
-# target to build an object file
-src/ssdl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/ssdl.cpp.o
-.PHONY : src/ssdl.cpp.o
-
-src/ssdl.i: src/ssdl.cpp.i
-.PHONY : src/ssdl.i
-
-# target to preprocess a source file
-src/ssdl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/ssdl.cpp.i
-.PHONY : src/ssdl.cpp.i
-
-src/ssdl.s: src/ssdl.cpp.s
-.PHONY : src/ssdl.s
-
-# target to generate assembly for a file
-src/ssdl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/ssdl.cpp.s
-.PHONY : src/ssdl.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -210,15 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... src/food.o"
-	@echo "... src/food.i"
-	@echo "... src/food.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/snake.o"
 	@echo "... src/snake.i"
 	@echo "... src/snake.s"
-	@echo "... src/ssdl.o"
-	@echo "... src/ssdl.i"
-	@echo "... src/ssdl.s"
 .PHONY : help
 
 

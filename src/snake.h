@@ -1,32 +1,40 @@
 #include <SDL2/SDL.h>  
-#include <SDL_keycode.h>
-#include "defines.h"
 
+// 假设我们使用简单的struct来表示蛇的每一部分  
+struct SnakePart {  
+    SDL_Rect rect; // SDL_Rect用于表示蛇身体部分的位置和大小  
+    SnakePart* prev = nullptr;  
+    SnakePart* next = nullptr;  
+  
+    SnakePart(int x, int y, int width, int height) : rect({x, y, width, height}) {}  
+};  
 
-class Snake
-{
-public:
-    Snake();
-	Snake(int x, int y);
-	~Snake(void);
-
-public:
-	void setCenterX(int x) { center_x = x; }
-	void setCenterY(int y) { center_y = y; }
-	int getCenterX() const { return this->center_x; }
-	int getCenterY() const { return this->center_y; }
+enum class Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };  
+class Snake {  
+private:  
+    SnakePart* head = nullptr;  
+    SnakePart* tail = nullptr;  
+    int length = 6;  
+    // 假设方向使用枚举表示  
     
-	//控制蛇的位置改变量
-	void changeCenterX(bool add,int num);
-	void changeCenterY(bool add,int num);
-	void Draw(SDL_Renderer* renderer);
-
-
-private:
-
-	int center_x;
-	int center_y;
-
-};
-
-
+    Direction currentDirection = Direction::STOP;  
+  
+    // 辅助函数：在链表末尾添加一个新部分  
+    void appendPart(int x, int y, int width, int height);
+    // 辅助函数：从链表头部移除一个部分  
+    void removeHead();
+  
+public:  
+    // 构造函数和析构函数  
+    Snake();
+    ~Snake();
+  
+    // 设置方向（这里简化了处理逻辑）  
+    void setDirection(Direction newDirection);
+	//	返回蛇的方向
+	Direction getCurrentDirection() const;
+    // 移动蛇（根据当前方向）  
+    void move(int screenWidth, int screenHeight, int partWidth, int partHeight);
+    // 渲染蛇（需要SDL_Renderer*）  
+    void render(SDL_Renderer* renderer);
+};  
