@@ -1,13 +1,15 @@
 #include "food.h"  
+#include "defines.h"
 
 Food::Food(){
-	center_x = rand() % SCREEN_WIDTH;
-	center_y = rand() % SCREEN_WIDTH;
+
+		center_x = rand() % SCREEN_xgezi;  
+        center_y = rand() % SCREEN_ygezi;  
 }
 
 void Food::getnewfood(){
-    center_x = rand() % SCREEN_WIDTH;
-	center_y = rand() % SCREEN_WIDTH;
+	center_x = rand() % SCREEN_xgezi;  
+        center_y = rand() % SCREEN_ygezi;  
 }
 void Food::changeCenterX(bool add,int num){
 	if(add){
@@ -26,11 +28,10 @@ void Food::changeCenterY(bool add,int num){
 
 
 void Food::Draw(SDL_Renderer* renderer){
-	   
      //绘制方块
          
-    SDL_Rect rect = {center_x, center_y, BLOCK_SIZE, BLOCK_SIZE};
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_Rect rect = {center_x*BLOCK_SIZE, center_y*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE};
+    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
     SDL_RenderFillRect(renderer, &rect);  
   //  SDL_RenderDrawRect(renderer, &rect);
 }

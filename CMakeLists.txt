@@ -12,7 +12,8 @@ find_package(SDL2 REQUIRED)
 
 add_executable(test
     src/main.cpp
-    src/snake.cpp)
+    src/snake.cpp
+    src/food.cpp)
 
 #target_link_libraries(test
 #    PRIVATE

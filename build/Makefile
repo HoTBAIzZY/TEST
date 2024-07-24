@@ -129,6 +129,30 @@ test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
+src/food.o: src/food.cpp.o
+.PHONY : src/food.o
+
+# target to build an object file
+src/food.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/food.cpp.o
+.PHONY : src/food.cpp.o
+
+src/food.i: src/food.cpp.i
+.PHONY : src/food.i
+
+# target to preprocess a source file
+src/food.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/food.cpp.i
+.PHONY : src/food.cpp.i
+
+src/food.s: src/food.cpp.s
+.PHONY : src/food.s
+
+# target to generate assembly for a file
+src/food.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/food.cpp.s
+.PHONY : src/food.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... src/food.o"
+	@echo "... src/food.i"
+	@echo "... src/food.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

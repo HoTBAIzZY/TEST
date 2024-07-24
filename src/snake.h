@@ -18,7 +18,7 @@ private:
     // 假设方向使用枚举表示  
     
     Direction currentDirection = Direction::STOP;  
-  
+    bool check_collision_self();
     // 辅助函数：在链表末尾添加一个新部分  
     void appendPart(int x, int y, int width, int height);
     // 辅助函数：从链表头部移除一个部分  
@@ -33,8 +33,17 @@ public:
     void setDirection(Direction newDirection);
 	//	返回蛇的方向
 	Direction getCurrentDirection() const;
+	//返回蛇头位置
+	int getx(){
+		return head->rect.x;
+	}
+
+	int gety(){
+		return head->rect.y;
+	}
     // 移动蛇（根据当前方向）  
-    void move(int screenWidth, int screenHeight, int partWidth, int partHeight);
+    int move(int screenWidth, int screenHeight, int partWidth, int partHeight);
+    int addone(int screenWidth, int screenHeight, int partWidth, int partHeight);
     // 渲染蛇（需要SDL_Renderer*）  
     void render(SDL_Renderer* renderer);
 };  

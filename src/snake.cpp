@@ -1,21 +1,22 @@
 #include "snake.h"  
 #include "defines.h"
-
+#include "iostream"
 
 // 构造函数和析构函数  
 Snake::Snake() {
 
 	// 创建头部  
-		int x = rand() % SCREEN_WIDTH;  
-        int y = rand() % SCREEN_HEIGHT;  
-        
+ 
+        int x = rand() % SCREEN_xgezi;
+        int y = rand() % SCREEN_ygezi;
+
         head = new SnakePart(x,y, BLOCK_SIZE, BLOCK_SIZE);  
         tail = head;  // 初始时，头部和尾部是同一个部分  
   
         // 根据长度创建剩余的身体部分  
         for (int i = 1; i < length; ++i) {  
             // 假设蛇是向右移动的，所以每个新部分的x坐标都增加width  
-            SnakePart* newPart = new SnakePart(x - i * BLOCK_SIZE, y, BLOCK_SIZE, BLOCK_SIZE);  
+            SnakePart* newPart = new SnakePart(x - i , y, BLOCK_SIZE, BLOCK_SIZE);  
               
             // 设置前一个部分的next指针指向新部分  
             if (tail != nullptr) {  
@@ -88,42 +89,93 @@ Direction Snake::getCurrentDirection() const {
     return currentDirection;  
 } 
     // 移动蛇（根据当前方向）  
-void Snake::move(int screenWidth, int screenHeight, int partWidth, int partHeight) {  
+int Snake::move(int screenWidth, int screenHeight, int partWidth, int partHeight) {  
         int newX = head->rect.x;  
         int newY = head->rect.y;  
   
         switch (currentDirection) {  
             case Direction::LEFT:  
-                newX -= partWidth;  
+                newX -= 1;  
                 break;  
             case Direction::RIGHT:  
-                newX += partWidth;  
+                newX += 1;  
                 break;  
             case Direction::UP:  
-                newY -= partHeight;  
+                newY -= 1;  
                 break;  
             case Direction::DOWN:  
-                newY += partHeight;  
+                newY += 1;  
                 break;  
             default:  
                 break;  
         }  
   
-        // 检查是否撞墙或撞到自己  
+        
+  
+        
         // 这里省略了碰撞检测的逻辑  
   
         // 如果没有碰撞，则添加新部分并移动蛇  
         appendPart(newX, newY, partWidth, partHeight);  
         removeHead(); // 假设总是移动头部，并删除尾部  
+        
+        // 检查是否撞墙或撞到自己   checkCollision(head, newX, newY)
+         if(newX <= 0 || newX >= SCREEN_xgezi || newY <= 0 || newY >= SCREEN_ygezi||check_collision_self()) {  
+             //处理碰撞逻辑（比如游戏结束等）    
+             std::cout << "Game Over!" << std::endl;  
+             return 1;  
+         }  
+        return 0;
 }  
+
+ // 移动蛇（根据当前方向）  
+int Snake::addone(int screenWidth, int screenHeight, int partWidth, int partHeight) {  
+        int newX = head->rect.x;  
+        int newY = head->rect.y;  
   
+        switch (currentDirection) {  
+            case Direction::LEFT:  
+                newX -= 1;  
+                break;  
+            case Direction::RIGHT:  
+                newX += 1;  
+                break;  
+            case Direction::UP:  
+                newY -= 1;  
+                break;  
+            case Direction::DOWN:  
+                newY += 1;  
+                break;  
+            default:  
+                break;  
+        }  
+  
+
+  
+        // 添加新部分并移动蛇  
+        appendPart(newX, newY, partWidth, partHeight);  
+        return 0;
+}  
+
+bool Snake::check_collision_self() {
+    SnakePart* current = head->next;
+    while (current != nullptr) {
+        if (head->rect.x == current->rect.x && head->rect.y == current->rect.y) {
+            return true; //Collision detected
+        }
+        current = current->next;
+    }
+    return false;
+}
     // 渲染蛇（需要SDL_Renderer*）  
 void Snake::render(SDL_Renderer* renderer) {  
         SnakePart* current = head;  
 		
         while (current) {  
+            SDL_Rect rect = {current->rect.x*BLOCK_SIZE, current->rect.y*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE};
+
             SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // 红色  
-            SDL_RenderFillRect(renderer, &current->rect);
+            SDL_RenderFillRect(renderer, &rect);
             current = current->next;  
         }  
 }  

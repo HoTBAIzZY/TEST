@@ -5,6 +5,7 @@
 #include <vector> 
 #include <iostream>
 #include "snake.h" 
+#include "food.h"
 #include "defines.h"
   
 // ... (假设Snake类和SnakePart结构体已经定义)  
@@ -16,7 +17,7 @@ private:
     SDL_Renderer* renderer = nullptr;  
     bool running = true;  
     Snake snake; // 假设Snake类已经定义，并且具有move和render方法  
-  
+    Food food;
     // 处理键盘事件以更新蛇的方向  
     void handleKeyEvent(SDL_Event& e) {  
         switch (e.key.keysym.sym) {  
@@ -100,19 +101,46 @@ public:
             }  
   
             // 更新游戏状态（移动蛇等）  
-           snake.move(SCREEN_WIDTH, SCREEN_HEIGHT, BLOCK_SIZE, BLOCK_SIZE);  
+           int collision=snake.move(SCREEN_WIDTH, SCREEN_HEIGHT, BLOCK_SIZE, BLOCK_SIZE);  
                 /* 需要屏幕大小、蛇身体宽度/高度等参数 */
-  
+            if(collision==0){
+                 snake_eat_food(snake, food, renderer);
             // 渲染游戏到屏幕  
             SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF); // 清除屏幕为白色  
             SDL_RenderClear(renderer);  
             snake.render(renderer);  
+            food.Draw(renderer);
             SDL_RenderPresent(renderer);  
-  
-            // 控制游戏速度（可选）  
-            SDL_Delay(1000); // 简单的速度控制  
+
+            
+            // 简单的速度控制  
+            SDL_Delay(400); 
+            }else{
+                //在屏幕输出游戏结束信息
+                std::cout << "game over" << std::endl;
+                running=false;
+            }
+               
+            
+                
+            
+            
+            
         }  
     }  
+    void snake_eat_food(Snake& s,Food& f,SDL_Renderer* renderer){
+        if(s.getx() == f.getCenterX() && s.gety() == f.getCenterY()){
+            //蛇身变长1
+            s.addone(SCREEN_WIDTH, SCREEN_HEIGHT, BLOCK_SIZE, BLOCK_SIZE);
+            //生成新食物 
+            f.getnewfood();           
+            f.Draw(renderer);        
+            // 更新屏幕  
+            SDL_RenderPresent(renderer);    
+        }
+    
+
+}
 };  
   
 // 注意：Snake类需要有一个getCurrentDirection()方法来获取当前方向，  
