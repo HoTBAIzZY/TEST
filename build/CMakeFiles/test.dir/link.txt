@@ -1,1 +1,1 @@
-/usr/bin/g++ -g -fsanitize=address CMakeFiles/test.dir/src/main.cpp.o CMakeFiles/test.dir/src/snake.cpp.o CMakeFiles/test.dir/src/food.cpp.o -o test  /usr/lib/x86_64-linux-gnu/libSDL2.so 
+/usr/bin/g++ -g -fsanitize=address CMakeFiles/test.dir/src/main.cpp.o CMakeFiles/test.dir/src/snake.cpp.o CMakeFiles/test.dir/src/food.cpp.o CMakeFiles/test.dir/src/game.cpp.o -o test  /usr/lib/x86_64-linux-gnu/libSDL2.so 

@@ -13,5 +13,10 @@
   "directory": "/home/zzy/workspace/test/build",
   "command": "/usr/bin/g++  -isystem /usr/include/SDL2 -g -fsanitize=address -o CMakeFiles/test.dir/src/food.cpp.o -c /home/zzy/workspace/test/src/food.cpp",
   "file": "/home/zzy/workspace/test/src/food.cpp"
+},
+{
+  "directory": "/home/zzy/workspace/test/build",
+  "command": "/usr/bin/g++  -isystem /usr/include/SDL2 -g -fsanitize=address -o CMakeFiles/test.dir/src/game.cpp.o -c /home/zzy/workspace/test/src/game.cpp",
+  "file": "/home/zzy/workspace/test/src/game.cpp"
 }
 ]

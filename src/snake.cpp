@@ -96,33 +96,35 @@ int Snake::move(int screenWidth, int screenHeight, int partWidth, int partHeight
         switch (currentDirection) {  
             case Direction::LEFT:  
                 newX -= 1;  
+                std::cout<<"left"<<std::endl;
                 break;  
             case Direction::RIGHT:  
                 newX += 1;  
+                std::cout<<"right"<<std::endl;
                 break;  
             case Direction::UP:  
                 newY -= 1;  
+                std::cout<<"up"<<std::endl;
                 break;  
             case Direction::DOWN:  
-                newY += 1;  
+                newY += 1;
+                std::cout<<"down"<<std::endl;  
                 break;  
             default:  
                 break;  
         }  
   
-        
   
-        
-        // 这里省略了碰撞检测的逻辑  
-  
-        // 如果没有碰撞，则添加新部分并移动蛇  
+        // 添加新部分并移动蛇  
         appendPart(newX, newY, partWidth, partHeight);  
+        std::cout<<"add new head"<<std::endl;  
+        
         removeHead(); // 假设总是移动头部，并删除尾部  
+        std::cout<<"delete tail"<<std::endl;  
         
         // 检查是否撞墙或撞到自己   checkCollision(head, newX, newY)
          if(newX <= 0 || newX >= SCREEN_xgezi || newY <= 0 || newY >= SCREEN_ygezi||check_collision_self()) {  
-             //处理碰撞逻辑（比如游戏结束等）    
-             std::cout << "Game Over!" << std::endl;  
+             std::cout<<"collision"<<std::endl;  
              return 1;  
          }  
         return 0;

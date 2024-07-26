@@ -27,12 +27,14 @@ void Food::changeCenterY(bool add,int num){
 }
 
 
-void Food::Draw(SDL_Renderer* renderer){
+bool Food::Draw(SDL_Renderer* renderer){
      //绘制方块
          
     SDL_Rect rect = {center_x*BLOCK_SIZE, center_y*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE};
     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
     SDL_RenderFillRect(renderer, &rect);  
+
+	return true;
   //  SDL_RenderDrawRect(renderer, &rect);
 }
 

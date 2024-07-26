@@ -19,7 +19,7 @@ public:
 	//控制食物的位置改变量
 	void changeCenterX(bool add,int num);
 	void changeCenterY(bool add,int num);
-	void Draw(SDL_Renderer* renderer);
+	bool Draw(SDL_Renderer* renderer);
 
 
 private:
